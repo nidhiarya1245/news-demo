@@ -1,0 +1,6 @@
+.newsImage {
+  object-fit: contain;
+  width: 100%;
+  height: auto;
+  background-color: lightgray;
+}
