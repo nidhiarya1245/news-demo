@@ -1,12 +1,16 @@
 const { getLatestnews } = require("../controller/latestnews.js");
 const {ARTICLES_RESPONSE_200, RESPONSE_ANY} = require('../constants/articleApiResponse.js')
 const { apiErrorResponse } = require('../errors/apiErrors.js');
+const {PAGE_NUMBER_PARAM} = require('../constants/apiQueryParams.js');
 
 module.exports = {
   latestNewsRoute: {
     method: "GET",
     path: "/getLatestNews/",
     options: {
+      validate: {
+        query: PAGE_NUMBER_PARAM
+      },
       handler: async (req, h) => {
         const { pageNumber } = req.query;
         try {

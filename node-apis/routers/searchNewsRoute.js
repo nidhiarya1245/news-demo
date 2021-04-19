@@ -1,22 +1,21 @@
 const { getNews } = require("../controller/news.js");
 const { ARTICLES_RESPONSE_200, RESPONSE_ANY } = require('../constants/articleApiResponse.js');
 const { apiErrorResponse } = require('../errors/apiErrors.js');
+const {PAGE_NUMBER_AND_QUERY_PARAM} = require('../constants/apiQueryParams.js');
 
 module.exports = {
   searchNewsRoute: {
     method: "GET",
-    path: '/getNews',
+    path: '/getNews/',
     options: {
-      // validate: {
-      //   params: Joi.object({
-      //     query: Joi.string(),
-      //   })
-      // },
+      validate: {
+        query: PAGE_NUMBER_AND_QUERY_PARAM
+      },
       handler: async (request, h) => {
         const { searchTerm, pageNumber } = request.query;
         try {
           const result = await getNews(searchTerm, pageNumber);
-          result = { ...result, pageNumber: pageNumber };
+          return { ...result, pageNumber: pageNumber };
         }
         catch (error) {
           apiErrorResponse(error);

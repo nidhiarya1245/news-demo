@@ -3,6 +3,19 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+react-app/junk
+react-app/.env
+react-app/node_modules
+react-app/package-lock.json
+react-app/.DS_Store
+react-app/.DS_Store/*.*
+
+node-apis/node_modules
+node-apis/.env
+node-apis/junk
+node-apis/package-lock.json
+node-apis/.DS_Store
+
 # User-specific files
 *.rsuser
 *.suo
